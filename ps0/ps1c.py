@@ -8,7 +8,6 @@
 def forever():
     annual_salary = 10000
     monthly_salary = int(annual_salary / 12)
-    semi_annual_raise = .07
     total_cost = 1000000
     portion_down_payment = total_cost * .25
     roi = .04
