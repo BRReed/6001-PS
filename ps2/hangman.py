@@ -300,30 +300,15 @@ def hangman_with_hints(secret_word):
 
 
 if __name__ == "__main__":
-    # pass
-
-    # To test part 2, comment out the pass line above and
-    # uncomment the following two lines.
-    # secret_word = choose_word(wordlist)
-    # hangman(secret_word)
-    # print(f'Game Over. Would you like to play again? \'y\' for yes or any key for no')
-    # play_again = input(">")
-    # if play_again.lower() == 'y':
-    #     secret_word = choose_word(wordlist)
-    #     hangman(secret_word)
-    
-    # print(is_word_guessed('bat', ['t', 'b', 'a'])) # returns True
-    # print(is_word_guessed('bat', ['c', 'g,', 'a'])) # returns False
-    # print(get_guessed_word('avril', ['v']))
-    # print(get_guessed_word('apple', ['p']))
-    # print(get_available_letters('a'))
-    # print(get_available_letters('qwertyuiopasdfghjkl'))
-###############
-    
-    # To test part 3 re-comment out the above lines and 
-    # uncomment the following two lines. 
-    
     secret_word = choose_word(wordlist)
     hangman_with_hints(secret_word)
+    while True:
+        print('Game Over. Would you like to play again? \'y\' ',
+            'for yes or any key for no')
+        play_again = input(">")
+        if play_again.lower() == 'y':
+            secret_word = choose_word(wordlist)
+            hangman_with_hints(secret_word)
+        else:
+            break
 
-    # show_possible_matches('l__a__r_s')

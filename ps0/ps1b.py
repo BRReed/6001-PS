@@ -28,7 +28,8 @@ def forever():
     months = 0
     while current_savings < portion_down_payment:
 
-        current_savings += int((monthly_salary * portion_saved) + (current_savings * (r / 12)))
+        current_savings += int((monthly_salary * portion_saved) + (
+                                current_savings * (r / 12)))
         months += 1
         if months % 6 == 0:
             annual_salary += int(annual_salary * semi_annual_raise)
