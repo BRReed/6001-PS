@@ -189,15 +189,13 @@ def match_with_gaps(my_word, other_word):
         _ , and my_word and other_word are of the same length;
         False otherwise: 
     '''
-    butt = ''
-    print(my_word)
-    print(my_word.replace(' ', ''))
-    
-    if my_word.replace(' ', '') == other_word:
-        return True
-    else:
-        return False
-    pass
+    i = 0
+    for char1 in my_word.replace(' ', ''):
+        if char1 != other_word[i] and char1 != '_':
+            return False
+        i += 1
+    return True
+
 
 
 
@@ -211,8 +209,13 @@ def show_possible_matches(my_word):
              that has already been revealed.
 
     '''
-    # FILL IN YOUR CODE HERE AND DELETE "pass"
-    pass
+    wl = []
+    for word in wordlist:
+        if len(word) == len(my_word):
+            if match_with_gaps(my_word, word) is True:
+                wl.append(word)
+    print(wl)
+
 
 
 
@@ -259,8 +262,7 @@ if __name__ == "__main__":
 
     # To test part 2, comment out the pass line above and
     # uncomment the following two lines.
-    
-    # secret_word = choose_word(wordlist)
+    secret_word = choose_word(wordlist)
     # hangman(secret_word)
     # print(f'Game Over. Would you like to play again? \'y\' for yes or any key for no')
     # play_again = input(">")
@@ -282,6 +284,4 @@ if __name__ == "__main__":
     #secret_word = choose_word(wordlist)
     #hangman_with_hints(secret_word)
 
-
-    print(match_with_gaps('s p _ z', 'sp_z'))
-    print(match_with_gaps('g g g f', 'fwaf3'))
+    show_possible_matches('l__a__r_s')
