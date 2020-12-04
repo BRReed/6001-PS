@@ -57,7 +57,8 @@ def is_word_guessed(secret_word, letters_guessed):
       lowercase
     letters_guessed: list (of letters), which letters have been guessed so far;
       assumes that all letters are lowercase
-    returns: boolean, True if all the letters of secret_word are in letters_guessed;
+    returns: boolean, True if all the letters of secret_word are in 
+      letters_guessed;
       False otherwise
     '''
     for l in secret_word:
@@ -73,8 +74,8 @@ def get_guessed_word(secret_word, letters_guessed):
     '''
     secret_word: string, the word the user is guessing
     letters_guessed: list (of letters), which letters have been guessed so far
-    returns: string, comprised of letters, underscores (_), and spaces that represents
-      which letters in secret_word have been guessed so far.
+    returns: string, comprised of letters, underscores (_), and spaces that 
+    represents which letters in secret_word have been guessed so far.
     '''
     word_guessed = ''
     for l in secret_word:
@@ -89,8 +90,8 @@ def get_guessed_word(secret_word, letters_guessed):
 def get_available_letters(letters_guessed):
     '''
     letters_guessed: list (of letters), which letters have been guessed so far
-    returns: string (of letters), comprised of letters that represents which letters have not
-      yet been guessed.
+    returns: string (of letters), comprised of letters that represents which 
+    letters have not yet been guessed.
     '''
     alphabet_list = list(string.ascii_lowercase)
     for l in letters_guessed:
@@ -132,7 +133,8 @@ def hangman(secret_word):
     letters_guessed = []
     while True:
         print(f'You have {guesses} left!')
-        print(f'Your available letters are: {get_available_letters(letters_guessed)}')
+        print('Your available letters are: ', 
+               get_available_letters(letters_guessed))
         print(f'{get_guessed_word(secret_word, letters_guessed)}')
         letter = input('Enter your guess:\n>').lower()
         if letter in get_available_letters(letters_guessed):
@@ -184,9 +186,9 @@ def match_with_gaps(my_word, other_word):
     my_word: string with _ characters, current guess of secret word
     other_word: string, regular English word
     returns: boolean, True if all the actual letters of my_word match the 
-        corresponding letters of other_word, or the letter is the special symbol
-        _ , and my_word and other_word are of the same length;
-        False otherwise: 
+    corresponding letters of other_word, or the letter is the special symbol
+    _ , and my_word and other_word are of the same length;
+    False otherwise: 
     '''
     i = 0
     for char1 in my_word.replace(' ', ''):
@@ -200,11 +202,11 @@ def match_with_gaps(my_word, other_word):
 def show_possible_matches(my_word):
     '''
     my_word: string with _ characters, current guess of secret word
-    returns: nothing, but should print out every word in wordlist that matches my_word
-             Keep in mind that in hangman when a letter is guessed, all the positions
-             at which that letter occurs in the secret word are revealed.
-             Therefore, the hidden letter(_ ) cannot be one of the letters in the word
-             that has already been revealed.
+    returns: nothing, but should print out every word in wordlist that matches 
+    my_word Keep in mind that in hangman when a letter is guessed, all the
+    positions at which that letter occurs in the secret word are revealed.
+    Therefore, the hidden letter(_ ) cannot be one of the letters in the word
+    that has already been revealed.
     '''
     wl = []
     for word in wordlist:
@@ -229,7 +231,8 @@ def hangman_with_hints(secret_word):
     * Before each round, you should display to the user how many guesses
       s/he has left and the letters that the user has not yet guessed.
     
-    * Ask the user to supply one guess per round. Make sure to check that the user guesses a letter
+    * Ask the user to supply one guess per round. Make sure to check that the 
+      user guesses a letter
       
     * The user should receive feedback immediately after each guess 
       about whether their guess appears in the computer's word.
@@ -248,12 +251,14 @@ def hangman_with_hints(secret_word):
     letters_guessed = []
     while True:
         print(f'You have {guesses} left!')
-        print(f'Your available letters are: {get_available_letters(letters_guessed)}')
+        print(f'Your available letters are: ',
+              get_available_letters(letters_guessed))
         print(f'{get_guessed_word(secret_word, letters_guessed)}')
-        print('Enter \'*\' as your guess to see all possible matches in words list')
+        print('Enter \'*\' to see all possible matches in words list')
         letter = input('Enter your guess:\n>').lower()
         if letter == '*':
-            show_possible_matches(get_guessed_word(secret_word, letters_guessed))
+            show_possible_matches(get_guessed_word(secret_word,
+                                                   letters_guessed))
             continue
         if letter in get_available_letters(letters_guessed):
             letters_guessed.append(letter)
