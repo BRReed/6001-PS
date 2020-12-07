@@ -174,10 +174,11 @@ def update_hand(hand, word):
     Has no side effects: does not modify hand.
 
     word: string
-    hand: dictionary (string -> int)    
+    hand: dictionary (string -> int)
     returns: dictionary (string -> int)
     """
-
+    
+        
     pass  # TO DO... Remove this line when you implement this function
 
 #
@@ -194,7 +195,15 @@ def is_valid_word(word, hand, word_list):
     word_list: list of lowercase strings
     returns: boolean
     """
-    
+    word = word.lower()
+    if word in word_list:
+        for letter in word:
+            if letter not in hand.keys():
+                return False
+        return True
+    else:
+        return False
+
     pass  # TO DO... Remove this line when you implement this function
 
 #
