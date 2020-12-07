@@ -74,9 +74,9 @@ def get_word_score(word, n):
     valid word.
 
     You may assume that the input word is always either a string of letters, 
-    or the empty string "". You may not assume that the string will only contain 
-    lowercase letters, so you will have to handle uppercase and mixed case 
-    strings appropriately. 
+    or the empty string "". You may not assume that the string will only 
+    contain lowercase letters, so you will have to handle uppercase and mixed 
+    case strings appropriately. 
 
 	The score for a word is the product of two components:
 
@@ -204,8 +204,6 @@ def is_valid_word(word, hand, word_list):
     else:
         return False
 
-    pass  # TO DO... Remove this line when you implement this function
-
 #
 # Problem #5: Playing a hand
 #
@@ -248,15 +246,20 @@ def play_hand(hand, word_list):
       returns: the total score for the hand
       
     """
-    
+    total_score = 0
+    while calculate_handlen(hand) > 0:
+        print('Your current hand is:')
+        display_hand(hand)
+        word = input('Please enter word, or \'!!\' if you are done.\n>')
+
     # BEGIN PSEUDOCODE <-- Remove this comment when you implement this function
     # Keep track of the total score
     
-    # As long as there are still letters left in the hand:
+    # As long as there are still letters left in the hand: $
     
-        # Display the hand
+        # Display the hand $
         
-        # Ask user for input
+        # Ask user for input $
         
         # If the input is two exclamation points:
         
@@ -273,7 +276,7 @@ def play_hand(hand, word_list):
             # Otherwise (the word is not valid):
                 # Reject invalid word (print a message)
                 
-            # update the user's hand by removing the letters of their inputted 
+            # update the user's hand by removing the letters of their inputted
             # word
             
 
@@ -281,7 +284,7 @@ def play_hand(hand, word_list):
     # so tell user the total score
 
     # Return the total score as result of function
-
+    
 
 
 #
