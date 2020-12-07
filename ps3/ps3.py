@@ -97,6 +97,10 @@ def get_word_score(word, n):
     word_score = 0
     for letter in word:
         word_score += SCRABBLE_LETTER_VALUES[letter]
+    if (7 * len(word)) - (3 * (n - len(word))) > 1:
+        pass # use equation
+    else:
+        pass # use 1
 
     pass  # TO DO... Remove this line when you implement this function
 
@@ -117,7 +121,7 @@ def display_hand(hand):
     """
     
     for letter in hand.keys():
-        for j in range(hand[letter]):
+        for _ in range(hand[letter]):
              print(letter, end=' ')      # print all on the same line
     print()                              # print an empty line
 
@@ -190,21 +194,20 @@ def is_valid_word(word, hand, word_list):
     word_list: list of lowercase strings
     returns: boolean
     """
-
+    
     pass  # TO DO... Remove this line when you implement this function
 
 #
 # Problem #5: Playing a hand
 #
-def calculate_handlen(hand):
+def calculate_handlen(hand): #
     """ 
     Returns the length (number of letters) in the current hand.
     
     hand: dictionary (string-> int)
     returns: integer
     """
-    
-    pass  # TO DO... Remove this line when you implement this function
+    return sum(hand.values())
 
 def play_hand(hand, word_list):
 
@@ -349,5 +352,7 @@ def play_game(word_list):
 # when the program is run directly, instead of through an import statement
 #
 if __name__ == '__main__':
-    word_list = load_words()
-    play_game(word_list)
+    # word_list = load_words()
+    # play_game(word_list)
+    print(calculate_handlen({'a': 1, 'b': 3, 'c': 3, 'b': 2}))# returns 6
+    print(calculate_handlen({'a': 1, 'b': 3, 'c': 3, 'a': 2}))# returns 8
