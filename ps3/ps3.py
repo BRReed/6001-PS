@@ -259,6 +259,9 @@ def play_hand(hand, word_list):
             total_score += word_score
             print(f'Your word got: {word_score}')
             print(f'Your total score is: {total_score}')
+        else:
+            print(f'Sorry, but {word} can not be found in the word list')
+
 
 
 
@@ -280,11 +283,11 @@ def play_hand(hand, word_list):
 
             # If the word is valid: $
 
-                # Tell the user how many points the word earned,
-                # and the updated total score
+                # Tell the user how many points the word earned, $
+                # and the updated total score $
 
-            # Otherwise (the word is not valid):
-                # Reject invalid word (print a message)
+            # Otherwise (the word is not valid): $
+                # Reject invalid word (print a message) $
                 
             # update the user's hand by removing the letters of their inputted
             # word
