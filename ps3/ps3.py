@@ -266,6 +266,9 @@ def play_hand(hand, word_list):
             print(f'Your total score is: {total_score}')
         else:
             print(f'Sorry, but {word} can not be found in the word list')
+        hand = update_hand(hand, word)
+    print(f'Your final score for this hand is: {total_score}')
+    return total_score
 
 
 
@@ -294,14 +297,14 @@ def play_hand(hand, word_list):
             # Otherwise (the word is not valid): $
                 # Reject invalid word (print a message) $
                 
-            # update the user's hand by removing the letters of their inputted
-            # word
+            # update the user's hand by removing the letters of their inputted $
+            # word $
             
 
-    # Game is over (user entered '!!' or ran out of letters),
-    # so tell user the total score
+    # Game is over (user entered '!!' or ran out of letters),$
+    # so tell user the total score $
 
-    # Return the total score as result of function
+    # Return the total score as result of function $
     
 
 
