@@ -251,6 +251,16 @@ def play_hand(hand, word_list):
         print('Your current hand is:')
         display_hand(hand)
         word = input('Please enter word, or \'!!\' if you are done.\n>')
+        if word.lower() == '!!':
+            break
+
+        if is_valid_word(word, hand, word_list) is True:
+            word_score = get_word_score(word, calculate_handlen(hand))
+            total_score += word_score
+            print(f'Your word got: {word_score}')
+            print(f'Your total score is: {total_score}')
+
+
 
     # BEGIN PSEUDOCODE <-- Remove this comment when you implement this function
     # Keep track of the total score
@@ -261,14 +271,14 @@ def play_hand(hand, word_list):
         
         # Ask user for input $
         
-        # If the input is two exclamation points:
+        # If the input is two exclamation points: $
         
-            # End the game (break out of the loop)
+            # End the game (break out of the loop) $
 
             
-        # Otherwise (the input is not two exclamation points):
+        # Otherwise (the input is not two exclamation points): $
 
-            # If the word is valid:
+            # If the word is valid: $
 
                 # Tell the user how many points the word earned,
                 # and the updated total score
@@ -364,7 +374,8 @@ def play_game(word_list):
 # when the program is run directly, instead of through an import statement
 #
 if __name__ == '__main__':
-    # word_list = load_words()
+    word_list = load_words()
     # play_game(word_list)
-    print(calculate_handlen({'a': 1, 'b': 3, 'c': 3, 'b': 2}))# returns 6
-    print(calculate_handlen({'a': 1, 'b': 3, 'c': 3, 'a': 2}))# returns 8
+    # print(calculate_handlen({'a': 1, 'b': 3, 'c': 3, 'b': 2}))# returns 6
+    # print(calculate_handlen({'a': 1, 'b': 3, 'c': 3, 'a': 2}))# returns 8
+    play_hand({'a': 1, 'b': 1, 'r': 1, 'f': 1}, word_list)
