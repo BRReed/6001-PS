@@ -94,15 +94,15 @@ def get_word_score(word, n):
     returns: int >= 0
     """
     word = word.lower()
+    x = (7 * len(word)) - (3 * (n - len(word)))
     word_score = 0
     for letter in word:
         word_score += SCRABBLE_LETTER_VALUES[letter]
-    if (7 * len(word)) - (3 * (n - len(word))) > 1:
-        pass # use equation
+    
+    if x > 1:
+        return (x * word_score)
     else:
-        pass # use 1
-
-    pass  # TO DO... Remove this line when you implement this function
+        return (word_score)
 
 #
 # Make sure you understand how this function works and what it does!
