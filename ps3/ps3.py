@@ -341,8 +341,8 @@ def play_game(word_list):
     """
     while True:
         try:
-            hand_amount = int(input('Please enter the number of hands you ', 
-                                'would like to play\n>'))
+            hand_amount = int(input(
+                'Please enter the number of hands you would like to play\n>'))
             break
         except ValueError:
             print('You must enter an integer, please try again.')
@@ -353,9 +353,10 @@ def play_game(word_list):
     while hand_amount > 0:
         if replay_hand == False:
             hand_amount -= 1
-            current_hand = deal_hand(3)
+            current_hand = deal_hand(15)
+            print(f'Your hand is: \n{current_hand}')
         if letter_sub > 0 and replay_hand == False:
-            print(f'You still have {letter_sub}\'s letter substitutions left')
+            print(f'You still have {letter_sub} letter substitutions left')
             sub = input('If you would like to use one, enter \'y\'\n>')
             if sub.lower() == 'y':
                 print(f'Your hand is: \n{current_hand}')
@@ -363,18 +364,19 @@ def play_game(word_list):
                 current_hand = substitute_hand(current_hand, letter)
         if replay_hand == True:
             print('You chose to replay your last hand.')
+            replay_hand = False
         print(f'Your current hand is:\n {current_hand}')
         
         hand_score = play_hand(current_hand, word_list)
         if replays > 0:
-            replay = input('If you would like to replay the hand, enter \'y\'',
-                           '>')
+            replay = input(
+                'If you would like to replay the hand, enter \'y\'\n>')
             if replay.lower() == 'y':
                 replay_hand = True
                 replays -= 1
             else:
                 total += hand_score
-
+    print(f'Your total overall score is {total}')
 
 
 
@@ -385,7 +387,7 @@ def play_game(word_list):
 #
 if __name__ == '__main__':
     word_list = load_words()
-    # play_game(word_list)
+    play_game(word_list)
     # print(calculate_handlen({'a': 1, 'b': 3, 'c': 3, 'b': 2}))# returns 6
     # print(calculate_handlen({'a': 1, 'b': 3, 'c': 3, 'a': 2}))# returns 8
-    play_hand({'a': 1, 'b': 1, 'r': 1, 'f': 1}, word_list)
+    # play_hand({'a': 1, 'b': 1, 'r': 1, 'f': 1}, word_list)
