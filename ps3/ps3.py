@@ -123,7 +123,7 @@ def display_hand(hand):
     for letter in hand.keys():
         for _ in range(hand[letter]):
              print(letter, end=' ')      # print all on the same line
-    print()                              # print an empty line
+    print()
 
 #
 # Make sure you understand how this function works and what it does!
@@ -183,8 +183,6 @@ def update_hand(hand, word):
             new_hand[letter] -= 1
     return new_hand
 
-        
-    pass  # TO DO... Remove this line when you implement this function
 
 #
 # Problem #3: Test word validity
@@ -270,44 +268,6 @@ def play_hand(hand, word_list):
     print(f'Your final score for this hand is: {total_score}')
     return total_score
 
-
-
-
-    # BEGIN PSEUDOCODE <-- Remove this comment when you implement this function
-    # Keep track of the total score
-    
-    # As long as there are still letters left in the hand: $
-    
-        # Display the hand $
-        
-        # Ask user for input $
-        
-        # If the input is two exclamation points: $
-        
-            # End the game (break out of the loop) $
-
-            
-        # Otherwise (the input is not two exclamation points): $
-
-            # If the word is valid: $
-
-                # Tell the user how many points the word earned, $
-                # and the updated total score $
-
-            # Otherwise (the word is not valid): $
-                # Reject invalid word (print a message) $
-                
-            # update the user's hand by removing the letters of their inputted $
-            # word $
-            
-
-    # Game is over (user entered '!!' or ran out of letters),$
-    # so tell user the total score $
-
-    # Return the total score as result of function $
-    
-
-
 #
 # Problem #6: Playing a game
 # 
@@ -339,7 +299,15 @@ def substitute_hand(hand, letter):
     letter: string
     returns: dictionary (string -> int)
     """
-    
+    new_hand = hand.copy()
+    alphabet = str(VOWELS + CONSONANTS)
+    while True:
+        new_letter = random.choice(alphabet)
+        if new_letter not in hand.keys():
+            new_val = new_hand.pop(letter)
+            new_hand[new_letter] = new_val
+            return new_hand
+            
     pass  # TO DO... Remove this line when you implement this function
        
     
