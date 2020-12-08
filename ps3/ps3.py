@@ -146,11 +146,11 @@ def deal_hand(n):
     hand={}
     num_vowels = int(math.ceil(n / 3))
 
-    for i in range(num_vowels):
+    for _ in range(num_vowels):
         x = random.choice(VOWELS)
         hand[x] = hand.get(x, 0) + 1
     
-    for i in range(num_vowels, n):    
+    for _ in range(num_vowels, n):    
         x = random.choice(CONSONANTS)
         hand[x] = hand.get(x, 0) + 1
     
@@ -307,10 +307,8 @@ def substitute_hand(hand, letter):
             new_val = new_hand.pop(letter)
             new_hand[new_letter] = new_val
             return new_hand
-            
-    pass  # TO DO... Remove this line when you implement this function
-       
-    
+
+
 def play_game(word_list):
     """
     Allow the user to play a series of hands
@@ -341,10 +339,43 @@ def play_game(word_list):
 
     word_list: list of lowercase strings
     """
-    
-    print("play_game not implemented.") # TO DO... Remove this line when you 
-                                        # implement this function
-    
+    while True:
+        try:
+            hand_amount = int(input('Please enter the number of hands you ', 
+                                'would like to play\n>'))
+            break
+        except ValueError:
+            print('You must enter an integer, please try again.')
+    total = 0
+    letter_sub = 1
+    replays = 1
+    replay_hand = False
+    while hand_amount > 0:
+        if replay_hand == False:
+            hand_amount -= 1
+            current_hand = deal_hand(3)
+        if letter_sub > 0 and replay_hand == False:
+            print(f'You still have {letter_sub}\'s letter substitutions left')
+            sub = input('If you would like to use one, enter \'y\'\n>')
+            if sub.lower() == 'y':
+                print(f'Your hand is: \n{current_hand}')
+                letter = input('What letter would you like to substitute\n>')
+                current_hand = substitute_hand(current_hand, letter)
+        if replay_hand == True:
+            print('You chose to replay your last hand.')
+        print(f'Your current hand is:\n {current_hand}')
+        
+        hand_score = play_hand(current_hand, word_list)
+        if replays > 0:
+            replay = input('If you would like to replay the hand, enter \'y\'',
+                           '>')
+            if replay.lower() == 'y':
+                replay_hand = True
+                replays -= 1
+            else:
+                total += hand_score
+
+
 
 
 #
