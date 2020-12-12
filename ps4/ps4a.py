@@ -3,6 +3,9 @@
 # Collaborators:
 # Time Spent: x:xx
 
+# personal note: I relied heavily on the image supplied in the readme.md file
+# in order to solve this problem. I can't find where I got it initially
+
 def get_permutations(sequence):
     '''
     Enumerate all permutations of a given string
@@ -28,15 +31,13 @@ def get_permutations(sequence):
         perms = []
         for c in sequence:
             new_seq = sequence.replace(c, '', 1)
-            print(f'new_seq + c: {new_seq + c}')
-            for l in new_seq:
-                new_seq2 = sequence.replace(l, '', 1)
-                print(f'new_seq2 {new_seq2 + l}')
-                # print(f'second: {perms}')
-    return perms
+            new_perm = get_permutations(new_seq)
+            for l in new_perm:
+                perms.append(c + l)
+        return perms
 
-print(get_permutations('abc'))
 
+if __name__ == "__main__":
 #    example_input = 'abc'
 #    print('Input:', example_input)
 #    print('Expected Output:', ['abc', 'acb', 'bac', 'bca', 'cab', 'cba'])
@@ -45,7 +46,7 @@ print(get_permutations('abc'))
 #    # Put three example test cases here (for your sanity, limit your inputs
 #    to be three characters or fewer as you will have n! permutations for a 
 # #    sequence of length n)
-#     print(get_permutations('a'))
-#     print(get_permutations(''))
-#     print(get_permutations('abc'))
-
+    print(get_permutations('a'))
+    print(get_permutations(''))
+    print(get_permutations('abc'))
+    print(get_permutations('abcd'))
