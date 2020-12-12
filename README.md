@@ -12,7 +12,7 @@ Project is created with:
 ## Setup
 To run this project:
 
-* Install Python and PIL
+* Install Python
 
 
 ```
