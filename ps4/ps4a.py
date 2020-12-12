@@ -27,15 +27,13 @@ def get_permutations(sequence):
     else:
         perms = []
         for c in sequence:
-            new_seq = sequence.replace(c, '')
-            new_perm = get_permutations(c + new_seq)
-            perms.append(new_perm)
-            print(f'first: {perms}')
-            for l in new_perm:
-                new_seq2 = sequence.replace(l, '')
-                perms.append(get_permutations(l + new_seq2))
-                print(f'second: {perms}')
-        return perms
+            new_seq = sequence.replace(c, '', 1)
+            print(f'new_seq + c: {new_seq + c}')
+            for l in new_seq:
+                new_seq2 = sequence.replace(l, '', 1)
+                print(f'new_seq2 {new_seq2 + l}')
+                # print(f'second: {perms}')
+    return perms
 
 print(get_permutations('abc'))
 
