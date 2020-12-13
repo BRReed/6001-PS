@@ -105,7 +105,24 @@ class Message(object):
         Returns: a dictionary mapping a letter (string) to 
                  another letter (string). 
         '''
-        pass #delete this line and replace with your code here
+        uppers = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+        lowers = 'abcdefghijklmnopqrstuvwxyz'
+        shifted_dict = {}
+        for char in uppers:
+            if uppers.index(char) + shift <= 25:
+                shifted_char = uppers.index(char) + shift
+                shifted_dict[char] = uppers[shifted_char]
+            else:
+                shifted_char = uppers.index(char) + shift - 26
+                shifted_dict[char] = uppers[shifted_char]
+        for char in lowers:
+            if lowers.index(char) + shift <= 25:
+                shifted_char = lowers.index(char) + shift
+                shifted_dict[char] = lowers[shifted_char]
+            else:
+                shifted_char = lowers.index(char) + shift - 26
+                shifted_dict[char] = lowers[shifted_char]
+        return shifted_dict
 
     def apply_shift(self, shift):
         '''
@@ -224,3 +241,5 @@ if __name__ == '__main__':
     #TODO: best shift value and unencrypted story 
     
     pass #delete this line and replace with your code here
+m = Message(2)
+print(m.build_shift_dict(12))
