@@ -67,7 +67,8 @@ class SubMessage(object):
 
         A SubMessage object has two attributes:
             self.message_text (string, determined by input text)
-            self.valid_words (list, determined using helper function load_words)
+            self.valid_words (list, determined using helper function 
+            load_words)
         '''
         self.message_text = text
         self.valid_words = load_words('words.txt')
@@ -92,13 +93,15 @@ class SubMessage(object):
                 
     def build_transpose_dict(self, vowels_permutation):
         '''
-        vowels_permutation (string): a string containing a permutation of vowels (a, e, i, o, u)
+        vowels_permutation (string): a string containing a permutation of 
+        vowels (a, e, i, o, u)
         
         Creates a dictionary that can be used to apply a cipher to a letter.
         The dictionary maps every uppercase and lowercase letter to an
         uppercase and lowercase letter, respectively. Vowels are shuffled 
         according to vowels_permutation. The first letter in vowels_permutation 
-        corresponds to a, the second to e, and so on in the order a, e, i, o, u.
+        corresponds to a, the second to e, and so on in the order 
+        a, e, i, o, u.
         The consonants remain the same. The dictionary should have 52 
         keys of all the uppercase letters and all the lowercase letters.
 
@@ -109,8 +112,9 @@ class SubMessage(object):
         Returns: a dictionary mapping a letter (string) to 
                  another letter (string). 
         '''
-        
-        pass #delete this line and replace with your code here
+        self.transpose_dict = {
+            'a': 'u', 'e': 'a', 'i': 'i', 'o': 'e', 'u': 'o'
+            }
     
     def apply_transpose(self, transpose_dict):
         '''
@@ -129,9 +133,11 @@ class EncryptedSubMessage(SubMessage):
 
         text (string): the encrypted message text
 
-        An EncryptedSubMessage object inherits from SubMessage and has two attributes:
+        An EncryptedSubMessage object inherits from SubMessage and has two 
+        attributes:
             self.message_text (string, determined by input text)
-            self.valid_words (list, determined using helper function load_words)
+            self.valid_words (list, determined using helper function 
+            load_words)
         '''
         pass #delete this line and replace with your code here
 
@@ -146,10 +152,10 @@ class EncryptedSubMessage(SubMessage):
         
         If no good permutations are found (i.e. no permutations result in 
         at least 1 valid word), return the original string. If there are
-        multiple permutations that yield the maximum number of words, return any
-        one of them.
+        multiple permutations that yield the maximum number of words, return 
+        any one of them.
 
-        Returns: the best decrypted message    
+        Returns: the best decrypted message
         
         Hint: use your function from Part 4A
         '''
@@ -162,7 +168,8 @@ if __name__ == '__main__':
     message = SubMessage("Hello World!")
     permutation = "eaiuo"
     enc_dict = message.build_transpose_dict(permutation)
-    print("Original message:", message.get_message_text(), "Permutation:", permutation)
+    print("Original message:", message.get_message_text(),
+          "Permutation:", permutation)
     print("Expected encryption:", "Hallu Wurld!")
     print("Actual encryption:", message.apply_transpose(enc_dict))
     enc_message = EncryptedSubMessage(message.apply_transpose(enc_dict))
