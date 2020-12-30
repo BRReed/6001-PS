@@ -113,8 +113,25 @@ class SubMessage(object):
                  another letter (string). 
         '''
         self.transpose_dict = {
-            'a': 'u', 'e': 'a', 'i': 'i', 'o': 'e', 'u': 'o'
-            }
+            'a': vowels_permutation[0],
+            'A': vowels_permutation[0].upper(),
+            'e': vowels_permutation[1],
+            'E': vowels_permutation[1].upper(),
+            'i': vowels_permutation[2],
+            'I': vowels_permutation[2].upper(),
+            'o': vowels_permutation[3],
+            'O': vowels_permutation[3].upper(),
+            'u': vowels_permutation[4],
+            'U': vowels_permutation[4].upper(),
+        }
+        for c in CONSONANTS_LOWER:
+            self.transpose_dict[c] = c
+        for c in CONSONANTS_UPPER:
+            self.transpose_dict[c] = c
+        return self.transpose_dict
+
+
+
     
     def apply_transpose(self, transpose_dict):
         '''
