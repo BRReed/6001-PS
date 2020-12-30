@@ -271,7 +271,7 @@ if __name__ == '__main__':
     print('Expected Output:', (24, 'hello'))
     print('Actual Output:', ciphertext.decrypt_message())
 
-    testplaintext = PlaintextMessage('everywhere you look everywhere you go', 7)
+    testplaintext = PlaintextMessage('Everywhere you look everywhere you go', 7)
     print('Expected Output: lclyfdolyl fvb svvr lclyfdolyl fvb nv')
     print('Actual Output:', testplaintext.get_message_text_encrypted())
 
