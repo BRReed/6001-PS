@@ -244,10 +244,10 @@ class CiphertextMessage(Message):
             self.message_split = self.m_text.split()
             z = 0
             for word in self.message_split:
-                if word in self.valid_words and z == (
+                if is_word(self.valid_words, word) and z == (
                                                 len(self.message_split) - 1):
                     return (i, str(self.m_text))
-                elif word in self.valid_words:
+                elif is_word(self.valid_words, word):
                     z += 1
                     continue
                 else:
@@ -276,5 +276,5 @@ if __name__ == '__main__':
     print('Actual Output:', testplaintext.get_message_text_encrypted())
 
     testcipher = CiphertextMessage(testplaintext.get_message_text_encrypted())
-    print('Expected Output:', (19, 'everywhere you look everywhere you go'))
+    print('Expected Output:', (19, 'Everywhere you look everywhere you go'))
     print('Actual Output:', testcipher.decrypt_message())
