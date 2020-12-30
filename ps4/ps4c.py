@@ -17,7 +17,6 @@ def load_words(file_name):
     Depending on the size of the word list, this function may
     take a while to finish.
     '''
-    
     print("Loading word list from file...")
     # inFile: file
     inFile = open(file_name, 'r')
@@ -70,7 +69,8 @@ class SubMessage(object):
             self.message_text (string, determined by input text)
             self.valid_words (list, determined using helper function load_words)
         '''
-        pass #delete this line and replace with your code here
+        self.message_text = text
+        self.valid_words = load_words('words.txt')
     
     def get_message_text(self):
         '''
@@ -78,7 +78,7 @@ class SubMessage(object):
         
         Returns: self.message_text
         '''
-        pass #delete this line and replace with your code here
+        return self.message_text
 
     def get_valid_words(self):
         '''
@@ -87,7 +87,8 @@ class SubMessage(object):
         
         Returns: a COPY of self.valid_words
         '''
-        pass #delete this line and replace with your code here
+        self.valid_words_copy = self.valid_words.copy()
+        return self.valid_words_copy
                 
     def build_transpose_dict(self, vowels_permutation):
         '''
