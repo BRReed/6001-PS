@@ -163,7 +163,10 @@ class SubMessage(object):
         '''
         self.encrypt_message = ''
         for c in self.message_text:
-            self.encrypt_message += self.transpose_dict[c]
+            if c in " !@#$%^&*()-_+={}[]|\:;'<>?,./\"":
+                self.encrypt_message += c
+            else:
+                self.encrypt_message += self.transpose_dict[c]
         return self.encrypt_message
 
 
@@ -207,12 +210,15 @@ class EncryptedSubMessage(SubMessage):
             t_d = self.build_transpose_dict(p)
             d_message = ''
             for c in self.message_text:
-                d_message += self.transpose_dict[c]
+                if c in " !@#$%^&*()-_+={}[]|\:;'<>?,./\"":
+                    d_message += c
+                else:
+                    d_message += self.transpose_dict[c]
             d_message_split = d_message.split()
             z = 0
             for word in d_message_split:
                 if is_word(self.valid_words, word) and z == (
-                                                len(self.message_split) - 1):
+                                                len(d_message_split) - 1):
                     return d_message
                 elif is_word(self.valid_words, word):
                     z += 1
