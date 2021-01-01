@@ -138,8 +138,8 @@ class Message(object):
         '''
         shifted_message = ''
         for char in self.message_text:
-            if char == ' ':
-                shifted_message += ' '
+            if char in " !@#$%^&*()-_+={}[]|\:;'<>?,./\"":
+                shifted_message += char
             else:
                 shifted_message += self.encryption_dict[char]
         return shifted_message

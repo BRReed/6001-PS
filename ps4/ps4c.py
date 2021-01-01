@@ -50,6 +50,26 @@ def is_word(word_list, word):
 
 ### END HELPER CODE ###
 
+def get_permutations(sequence):
+    '''
+    Enumerate all permutations of a given string
+
+    sequence (string): an arbitrary string to permute. Assume that it is a
+    non-empty string.  
+
+    Returns: a list of all permutations of sequence
+    '''
+    if len(sequence) == 0:
+        return [sequence]
+    else:
+        perms = []
+        for c in sequence:
+            new_seq = sequence.replace(c, '', 1)
+            new_perm = get_permutations(new_seq)
+            for l in new_perm:
+                perms.append(c + l)
+        return perms
+
 WORDLIST_FILENAME = 'words.txt'
 
 # you may find these constants helpful
@@ -132,6 +152,7 @@ class SubMessage(object):
 
 
 
+
     
     def apply_transpose(self, transpose_dict):
         '''
@@ -140,9 +161,12 @@ class SubMessage(object):
         Returns: an encrypted version of the message text, based 
         on the dictionary
         '''
-        
-        pass #delete this line and replace with your code here
-        
+        self.encrypt_message = ''
+        for c in self.message_text:
+            self.encrypt_message += self.transpose_dict[c]
+        return self.encrypt_message
+
+
 class EncryptedSubMessage(SubMessage):
     def __init__(self, text):
         '''
@@ -156,7 +180,8 @@ class EncryptedSubMessage(SubMessage):
             self.valid_words (list, determined using helper function 
             load_words)
         '''
-        pass #delete this line and replace with your code here
+        self.message_text = text
+        self.valid_words = load_words('words.txt')
 
     def decrypt_message(self):
         '''
@@ -176,7 +201,26 @@ class EncryptedSubMessage(SubMessage):
         
         Hint: use your function from Part 4A
         '''
-        pass #delete this line and replace with your code here
+        vowel_perms = get_permutations('aeiou')
+
+        for p in vowel_perms:
+            t_d = self.build_transpose_dict(p)
+            d_message = ''
+            for c in self.message_text:
+                d_message += self.transpose_dict[c]
+            d_message_split = d_message.split()
+            z = 0
+            for word in d_message_split:
+                if is_word(self.valid_words, word) and z == (
+                                                len(self.message_split) - 1):
+                    return d_message
+                elif is_word(self.valid_words, word):
+                    z += 1
+                    continue
+                else:
+                    break
+
+
     
 
 if __name__ == '__main__':
