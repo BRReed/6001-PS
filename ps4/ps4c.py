@@ -10,10 +10,10 @@ from ps4a import get_permutations
 def load_words(file_name):
     '''
     file_name (string): the name of the file containing 
-    the list of words to load    
-    
+    the list of words to load
+
     Returns: a list of valid words. Words are strings of lowercase letters.
-    
+
     Depending on the size of the word list, this function may
     take a while to finish.
     '''
@@ -34,7 +34,7 @@ def is_word(word_list, word):
 
     word_list (list): list of words in the dictionary.
     word (string): a possible word.
-    
+
     Returns: True if word is in word_list, False otherwise
 
     Example:
@@ -82,7 +82,7 @@ class SubMessage(object):
     def __init__(self, text):
         '''
         Initializes a SubMessage object
-                
+
         text (string): the message's text
 
         A SubMessage object has two attributes:
@@ -92,11 +92,11 @@ class SubMessage(object):
         '''
         self.message_text = text
         self.valid_words = load_words('words.txt')
-    
+
     def get_message_text(self):
         '''
         Used to safely access self.message_text outside of the class
-        
+
         Returns: self.message_text
         '''
         return self.message_text
@@ -105,17 +105,17 @@ class SubMessage(object):
         '''
         Used to safely access a copy of self.valid_words outside of the class.
         This helps you avoid accidentally mutating class attributes.
-        
+
         Returns: a COPY of self.valid_words
         '''
         self.valid_words_copy = self.valid_words.copy()
         return self.valid_words_copy
-                
+
     def build_transpose_dict(self, vowels_permutation):
         '''
         vowels_permutation (string): a string containing a permutation of 
         vowels (a, e, i, o, u)
-        
+
         Creates a dictionary that can be used to apply a cipher to a letter.
         The dictionary maps every uppercase and lowercase letter to an
         uppercase and lowercase letter, respectively. Vowels are shuffled 
@@ -150,14 +150,10 @@ class SubMessage(object):
             self.transpose_dict[c] = c
         return self.transpose_dict
 
-
-
-
-    
     def apply_transpose(self, transpose_dict):
         '''
         transpose_dict (dict): a transpose dictionary
-        
+
         Returns: an encrypted version of the message text, based 
         on the dictionary
         '''
@@ -189,12 +185,12 @@ class EncryptedSubMessage(SubMessage):
     def decrypt_message(self):
         '''
         Attempt to decrypt the encrypted message 
-        
+
         Idea is to go through each permutation of the vowels and test it
         on the encrypted message. For each permutation, check how many
         words in the decrypted text are valid English words, and return
         the decrypted message with the most English words.
-        
+
         If no good permutations are found (i.e. no permutations result in 
         at least 1 valid word), return the original string. If there are
         multiple permutations that yield the maximum number of words, return 
@@ -226,8 +222,6 @@ class EncryptedSubMessage(SubMessage):
                 else:
                     break
 
-
-    
 
 if __name__ == '__main__':
 
